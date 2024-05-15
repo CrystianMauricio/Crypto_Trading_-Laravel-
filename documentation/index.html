@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Crypto Trading Competitions</title>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="../public/vendor/semantic/semantic.min.css">
+</head>
+<body>
+  <div class="ui one column stackable grid container">
+    <div class="column">
+      <h1 class="ui teal dividing header">Crypto Trading Competitions</h1>
+      <h2 class="ui teal header">System requirements</h2>
+      <div class="ui list">
+        <div class="item">
+          <i class="setting icon"></i>
+          <div class="content">
+            PHP 7.1.3 &mdash; 7.3.
+          </div>
+        </div>
+        <div class="item">
+          <i class="setting icon"></i>
+          <div class="content">
+            PHP extensions: cURL, Mbstring, OpenSSL, PDO, Tokenizer, XML, Ctype, JSON, BCMath.
+          </div>
+        </div>
+        <div class="item">
+          <i class="setting icon"></i>
+          <div class="content">
+            PHP function set_time_limit() enabled.
+          </div>
+        </div>
+        <div class="item">
+          <i class="setting icon"></i>
+          <div class="content">
+            URL rewrite enabled.
+          </div>
+        </div>
+        <div class="item">
+          <i class="setting icon"></i>
+          <div class="content">
+            The application should be installed to the
+            <b>web root</b> folder of a domain or sub domain (it will not work if installed to a sub folder).
+          </div>
+        </div>
+      </div>
+
+      <h2 class="ui teal header">Installation</h2>
+
+      <div class="ui styled fluid accordion">
+        <div class="active title">
+          <i class="dropdown icon"></i>
+          using cPanel, Plesk or other control panel
+        </div>
+        <div class="content">
+          <h3 class="ui header">Step 1</h3>
+          <p>
+            Download the application zip package from CodeCanyon and log in to cPanel (or other control panel).
+          </p>
+
+          <h3 class="ui header">Step 2</h3>
+          <p>
+            Open <b>File Manager</b>, upload the downloaded zip package to <b>public_html</b> folder
+            (web root folder of your domain or subdomain), right click on the archive and choose <b>Extract</b>.
+          </p>
+          <div class="ui warning message">
+            <div class="header">Important</div>
+            <p>
+              Please ensure that <b>Show hidden files</b> option is enabled before you extract the files
+              (<b>File Manager</b> » <b>Settings</b>):
+            </p>
+            <img src="assets/images/cpanel-filemanager-settings.jpg" class="img-fluid">
+          </div>
+
+          <h3 class="ui header">Step 3</h3>
+          <p>
+            Open <b>MySQL Databases</b> page, create a new MySQL database, create a new user and add the user to the database selecting
+            <b>All privileges</b> like this:
+          </p>
+          <img src="assets/images/cpanel-mysql-permissions.jpg" class="img-fluid">
+
+          <h3 class="ui header">Step 4</h3>
+          <p>
+            Run the application installation script by accessing the following URL in a web browser:
+            <b>http://mywebsite.com/install.php</b> (substitute mywebsite.com with your actual domain name).
+            Follow the on-screen setup instructions to complete the installation.
+          </p>
+
+          <h3 class="ui header">Step 5</h3>
+          <p>
+            Open <b>Cron Jobs</b> page and add a new cron (scheduled) job to your server.
+            The cron job parameters are provided after successful installation of the application and on the
+            <b>Backend</b> » <b>Maintenance</b> page.
+          </p>
+          <p>
+            In <b>cPanel</b> the cron job should look like this:
+          </p>
+          <img src="assets/images/cpanel-cron-parameters.jpg" class="img-fluid">
+          <p>
+            In <b>Plesk</b> the cron job should look like this:
+          </p>
+          <img src="assets/images/plesk-cron-parameters.jpg" class="img-fluid mb-3">
+
+          <h3 class="ui header">Step 6</h3>
+          <p>
+            Log in as admin and go to <b>Backend</b> » <b>Settings</b> » <b>Email</b>.
+            Enter the credentials of the SMTP server that will deliver emails sent by the application.
+          </p>
+        </div>
+
+        <div class="active title">
+          <i class="dropdown icon"></i>
+          using SSH client
+        </div>
+        <div class="content">
+          <h3 class="ui header">Step 1</h3>
+          <p>
+            Install and configure a LAMP stack (Linux, Apache, MySQL, PHP).
+            If your server comes with Ubuntu OS you can use <a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04" target="_blank">this guide</a>,
+            for other operating systems find the corresponding manual.
+          </p>
+          <div class="ui warning message">
+            <div class="header">Important</div>
+            <p>
+              Make sure that <b>URL rewrite</b> is enabled. You can do it by running the following command:
+            </p>
+            <div class="ui black label">
+              a2enmod rewrite
+            </div>
+
+            <p>Also make sure that <b>.htaccess</b> files are allowed (<b>AllowOverride</b> directive is set to
+              <b>All</b>) either globally or in the virtual host config file.
+              To enable it on the virtual host level add the following block to the virtual host config file (/etc/apache2/sites-enabled/mywebsite.conf):
+            </p>
+            <pre>&lt;VirtualHost *:80&gt;
+  ...
+
+  &lt;Directory /var/www/mywebsite.com/&gt;
+    Options FollowSymLinks MultiViews
+    <b>AllowOverride All</b>
+    Require all granted
+    Order allow,deny
+    allow from all
+  &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</pre>
+            <p>Please note that you need to restart the Apache service after making configuration changes.</p>
+          </div>
+
+          <div class="ui info message">
+            <div class="header">Nginx web server</div>
+            <p>
+              If you are deploying your application to a server that is running <b>Nginx</b> web server,
+              please read <a href="https://laravel.com/docs/5.7/deployment#nginx" target="_blank">this guide</a>.
+            </p>
+          </div>
+
+          <h3 class="ui header">Step 2</h3>
+          <p>
+            Create a new MySQL database, create a new user and add the user to the database.
+            You can do so by logging in to MySQL as root and running the following commands:
+          </p>
+          <div class="ui black label" style="width: 100%;">
+            <div class="block">CREATE DATABASE trading CHARACTER SET utf8 COLLATE utf8_general_ci;</div>
+            <div class="block">CREATE USER 'trading'@'localhost' IDENTIFIED BY 'password123';</div>
+            <div class="block">GRANT ALL PRIVILEGES ON trading.* TO 'trading'@'localhost';</div>
+          </div>
+
+          <h3 class="ui header">Step 3</h3>
+          <p>
+            Download the application zip package from CodeCanyon, upload it to the web root folder of your domain or subdomain and unzip.
+          </p>
+          <div class="ui warning message">
+            <div class="header">Important</div>
+            <p>
+              Make sure that the user your web server is running under (usually <b>www-data</b>) has
+              read and write access to the application files and folders.
+              The easiest way to set it up is to make the <b>www-data</b> user owner of the application files and folders recursively.
+              It can be done as follows (assuming <i>/var/www/mywebsite.com</i> is the web root folder):
+            </p>
+            <div class="ui black label" style="width: 100%;">
+              <div>cd /var/www</div>
+              <div>chown -R www-data mywebsite.com</div>
+            </div>
+          </div>
+
+          <h3 class="ui header">Step 4</h3>
+          <p>
+            Run the application installation script by accessing the following URL in a web browser:
+            <b>http://mywebsite.com/install.php</b> (substitute mywebsite.com with your actual domain name).
+            Follow the on-screen setup instructions to complete the installation.
+          </p>
+
+          <h3 class="ui header">Step 5</h3>
+          <p>
+            Add a new cron (scheduled) job to your server.
+            The cron job parameters are provided after successful installation of the application and on the
+            <b>Backend</b> » <b>Maintenance</b> page. The cron job can be added by
+            executing <span class="ui black label">crontab -e</span> and pasting the command.
+          </p>
+          <div class="ui warning message">
+            <div class="header">Important</div>
+            <p>
+              It is <b>not</b> recommended to add and execute the cron job as <b>root</b>,
+              otherwise when logging is enabled in the application settings the log files
+              will be owned by the root user, which in turn will trigger a 500 server error due to lack of permissions.
+            </p>
+          </div>
+
+          <h3 class="ui header">Step 6</h3>
+          <p>
+            Log in as admin and go to <b>Backend</b> » <b>Settings</b> » <b>Email</b>.
+            Enter the credentials of the SMTP server that will deliver emails sent by the application.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="ui teal header">Frequently Asked Questions</h2>
+      <div class="ui styled fluid accordion">
+        <div class="active title">
+          <i class="dropdown icon"></i> I have installed the app. What's next?
+        </div>
+        <div class="content">
+          <p>
+            Once the app is up and running you have everything in place to run trading competitions.
+            Log in to the website as admin, go to the admin panel and create a new competition.
+            Customize competition parameters (such as starting balance, lot size, leverage etc) as needed.
+            Users who sign up to the website will then be able to join this competition and place trades.
+          </p>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i>
+          How do I change the default currency?
+        </div>
+        <div class="content">
+          <p>
+            If you like to use a currency other than USD you can choose it in the app settings (navigate to Settings page in the backend).
+            Please note that in this case you will also need to obtain a FREE openexchangerates.org API key by signing up at
+            <a href="https://openexchangerates.org/signup/free" target="_blank">https://openexchangerates.org/signup/free</a>.
+            After you got the key save it in the settings ("Integration" tab).
+          </p>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i> How to customize translations?
+        </div>
+        <div class="content">
+          <p>
+            You can change translation strings for any language by editing translation files at
+            <b>resources/lang/LANGUAGE_CODE</b>.
+          </p>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i> How to upgrade the app to a new version?
+        </div>
+        <div class="content">
+          <p>
+          <div class="ui bulleted list">
+            <div class="item">Back up the application files and database.</div>
+            <div class="item">Download the latest application package from CodeCanyon, upload it to your server and unzip (overwrite all existing files).</div>
+            <div class="item">Go to <b>Backend</b> » <b>Maintenance</b> page and click <b>Run database updates</b> and then <b>Clear cache</b> button.</div>
+            <div class="item">Clear cache in your browser and refresh the page</div>
+            <div class="item">Check that the application is working correctly.</div>
+          </div>
+          <p>
+            The application settings will remain the same,
+            but please note that if you changed any of the application files you will have to apply these changes again.
+          </p>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i> How does bots feature work?
+        </div>
+        <div class="content">
+          <p>
+            Bots are users that can trade on their own without user intervention. To create bots open the
+            <b>Users</b> page in the backend, input number of bots and click "Create bots". After bots are created you can adjust their names and add avatar pictures, so they appear more like regular users. Then on the
+            <b>Competitions</b> page you can add any number of bots to a particular competition (they will be randomly selected from the list of available bots).
+          </p>
+          <p>
+            If there are bots in a competition then every 5 minutes the app will wake them up. Every bot will open a random number of trades (min and max number of trades that can be open during each cycle can be specified in the app settings). The asset to trade will be randomly picked up from the list of top N assets (where N is a number, which can be specified in the settings). Trade direction and volume will also be randomly generated.
+          </p>
+          <p>
+            Every bot will also check if there are any previously open trades whose life time exceeds the min trade life time (specified in the settings). If so the bot will close a random number of such trades (min and max number of trades that can be closed during each cycle can be specified in the app settings).
+          </p>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i> How to enable chat?
+        </div>
+        <div class="content">
+          <p>
+            Chat uses
+            <a href="https://pusher.com/" rel="nofollow" target="_blank">Pusher</a> to function. In order to enable chat functionality you need to create a free account at
+            <a href="https://pusher.com/" rel="nofollow" target="_blank">pusher.com</a>, create a new channels app and obtain its credentials (such as app ID, key, secret and cluster). After that input these credentials in the application settings in the backend (under "Integration" tab). The chat should then start working automatically.
+          </p>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i> How to enable social login with Facebook?
+        </div>
+        <div class="content">
+          <div class="ui bulleted list">
+            <div class="item">
+              Read the <a href="https://developers.facebook.com/docs/facebook-login/" target="_blank">guidelines</a>.
+            </div>
+            <div class="item">Ensure you have a valid SSL certificate installed on your domain (your website is accessible via HTTPS).</div>
+            <div class="item">Create a Facebook application and add Web platform.</div>
+            <div class="item">
+              <p>
+                Amongst other things please make sure to fill in <b>App domains</b> field under <b>Settings
+                <i class="right chevron icon"></i>Basic</b> and <b>Valid OAuth Redirect URIs</b> field under
+                <b>Facebook login <i class="right chevron icon"></i>Settings</b>. Example:
+              </p>
+              <img class="ui fluid image" src="assets/images/facebook_login_settings.png">
+              <p>The paths should be the same except that you need to specify your own domain.</p>
+            </div>
+            <div class="item">Make the Facebook app live and obtain <b>Client ID</b> and <b>Client secret</b>.</div>
+            <div class="item">Input <b>Client ID</b> and
+              <b>Client secret</b> in the backend settings of the app (Integration tab).
+            </div>
+          </div>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i> How to enable social login with Google?
+        </div>
+        <div class="content">
+          <div class="ui bulleted list">
+            <div class="item">
+              Read the <a href="https://developers.google.com/identity/sign-in/web/sign-in" target="_blank">guidelines</a>.
+            </div>
+            <div class="item">Ensure you have a valid SSL certificate installed on your domain (your website is accessible via HTTPS).</div>
+            <div class="item">Create a Google application and enable Google+ API for it.</div>
+            <div class="item">Obtain <b>Client ID</b> and <b>Client secret</b>.</div>
+            <div class="item">Input <b>Client ID</b> and
+              <b>Client secret</b> in the backend settings of the app (Integration tab).
+            </div>
+          </div>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i> How to enable social login with Twitter?
+        </div>
+        <div class="content">
+          <div class="ui bulleted list">
+            <div class="item">Ensure you have a valid SSL certificate installed on your domain (your website is accessible via HTTPS).</div>
+            <div class="item">Create a Twitter application at
+              <a href="https://apps.twitter.com/app" target="_blank">https://apps.twitter.com/app</a>.
+            </div>
+            <div class="item">
+              <p>
+                Please make sure to enable <b>Request email addresses from users</b> checkbox under <b>Permissions</b>.
+              </p>
+              <img class="ui fluid image" src="assets/images/twitter_login_settings.png">
+            </div>
+            <div class="item">Obtain <b>Client ID</b> (Consumer Key) and <b>Client secret</b> (Consumer Secret).</div>
+            <div class="item">Input <b>Client ID</b> and
+              <b>Client secret</b> in the backend settings of the app (Integration tab).
+            </div>
+          </div>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i> How to add a new static text / informational page?
+        </div>
+        <div class="content">
+          <p>
+            Suppose you want to add a new page called "About us", which is accessible at
+            <b>http://yourwebsite/page/about-us</b> (please note that all static pages URLs should include "page" slug). To do so create a new template file named
+            <b>about-us-udf.php</b> (please note that "-udf" suffix should always be present in the template file name for every custom page you add) inside
+            <b>resources/views/pages/frontend/static</b> folder and add necessary HTML markup / content.
+          </p>
+          <p>
+            Using the same technique you can override default Privacy Policy and Terms of Use pages templates by creating
+            <b>resources/views/pages/frontend/static/privacy-policy-udf.blade.php</b> or
+            <b>resources/views/pages/frontend/static/terms-of-use-udf.blade.php</b> template files respectively. Do not modify the original
+            <b>privacy-policy.blade.php</b> or
+            <b>terms-of-use.blade.php</b> files to be able to keep your custom changes after future application updates.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="ui teal header">Credits</h2>
+      <div class="ui list">
+        <div class="item"><i class="code icon"></i>
+          <div class="content">PHP framework: <a href="https://laravel.com/docs/5.7" target="_blank">Laravel 5.7</a>
+          </div>
+        </div>
+        <div class="item"><i class="code icon"></i>
+          <div class="content">Front-end framework:
+            <a href="https://semantic-ui.com" target="_blank">Semantic UI 2.3</a></div>
+        </div>
+        <div class="item"><i class="code icon"></i>
+          <div class="content">Market Data API: <a href="http://coincap.io/" target="_blank">CoinCap.io</a></div>
+        </div>
+      </div>
+
+      <h2 class="ui teal header">Support</h2>
+      <p>
+        Please note that support can only be provided during the application support period. 6 months of free support are provided with your purchase. Should you need support outside of this period you will need to renew it.
+        <a href="https://help.market.envato.com/hc/en-us/articles/207886473-Extending-and-Renewing-Item-Support" target="_blank"> How to extend / renew the app support? </a>
+      </p>
+      <p>
+        To get technical support please submit a new ticket at <a href="https://support.financialplugins.com" target="_blank">https://support.financialplugins.com</a>. If you see an application error please do the following:
+      </p>
+      <ul>
+        <li>Enable <b>Debug</b> mode (<b>Backend</b> » <b>Settings</b> » <b>Developer</b>)<sup>1</sup></li>
+        <li>Repeat the error</li>
+        <li>Make a screenshot of the error</li>
+        <li>Check the browser console and make a screenshot if there are any errors</li>
+        <li>Provide the above information along with the application error log (can be found in <b>storage/logs</b> folder)</li>
+        <li>Provide steps to reproduce the error</li>
+      </ul>
+      <p>
+        In case the issue is difficult to trace our support team can request SSH / cPanel access to your server and / or website admin access.
+      </p>
+      <hr>
+      <p>
+        1 &mdash; If you don't have access to backend please edit
+        <b>.env</b> configuration file (located in the web root folder of your domain) and set the following variables:
+      </p>
+      <pre>APP_DEBUG=true
+LOG_LEVEL=debug
+</pre>
+    </div>
+  </div>
+
+  <div class="ui hidden divider"></div>
+  <div class="ui hidden divider"></div>
+
+  <div class="ui inverted vertical segment">
+    <div class="ui container">
+      <div class="ui middle aligned stackable inverted equal height stackable grid">
+        <div class="eight wide tablet-and-below-center column">
+          <h4 class="ui inverted header">
+            Crypto Trading Competitions
+          </h4>
+        </div>
+        <div class="eight wide right aligned tablet-and-below-center column">
+          <p>&copy; Built with <i class="heart teal icon"></i>by
+            <a href="https://financialplugins.com" target="_blank">FinancialPlugins.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="../public/vendor/semantic/semantic.min.js"></script>
+  <script>
+  $(document).ready(function ($) {
+    $('.ui.accordion').accordion()
+  })
+  </script>
+</body>
+</html>

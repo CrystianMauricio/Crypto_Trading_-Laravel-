@@ -1,0 +1,93 @@
+Crypto Trading Competitions
+---------------------------
+
+CHANGES HISTORY
+---------------
+v2.1.0 - 15 February 2024
+- The list of coins is updated.
+
+v2.0.0 - 31 May 2023
+- Laravel framework upgraded to version 10.13. Min PHP version: 8.1.
+
+v1.4.7 - 25 April 2022
+- Ability to input coincap.io API key in the settings.
+
+v1.4.6 - 30 April 2021
+- Minor bug fixes.
+
+v1.4.5 - 10 March 2021
+- Minor bug fixes.
+
+v1.4.4 - 25 November 2019
+Bug fix: bots don't respect margin requirements when opening new trades.
+
+v1.4.3 - 22 May 2019
+- Ability to create free to join competitions with cash rewards (Accounting & Cash Competitions Add-on is required).
+
+v1.4.2 - 21 May 2019
+- Bug fix: pagination on the competition leaderboard page.
+- Bug fix: when the website currency is not USD chart is still displayed in USD.
+- Bug fix: incorrect Total P/L is displayed for competition participants who didn't make any trades.
+
+v1.4.1 - 18 March 2019
+- Verify that user is active when browsing pages for authenticated users, logging in or resetting password.
+
+v1.4.0 - 26 February 2019
+- Bots implemented (check documentation how to use this feature).
+
+v1.3.0 - 21 February 2019
+- Laravel framework upgraded to version 5.7, before upgrading please make sure your server is running PHP 7.1.3 or higher.
+- Chat implemented.
+- Optional user emails verification feature implemented (can be enabled / disabled in the backend).
+- Optional reCaptcha v.2 validation added to login, registration, forgot password forms.
+
+v1.2.4 - 26 January 2019
+- New CoinCap.io API 2.0 integrated, the old API (and hence previous versions of the app) will stop working on March 1st, 2019.
+- Bug fix: competition cloning.
+- Other minor fixes and improvements.
+
+v1.2.3 - 03 December 2018
+- Ability to limit the number of coins that can be traded in a particular competition. For example, an administrator can create a competition, where only Bitcoin, Ethereum and Ripple can be traded.
+
+v1.2.2 - 23 November 2018
+- Historical coin charts added to the trade page.
+- Ability to clone (copy) existing competitions in the backend.
+- Ability to mark compitition as "Recurring" (if this flag is set the competition will be automatically re-created with the same parameters after it is finished).
+- Templates for error pages (401, 404, 500) added.
+
+v1.2.1 - 15 November 2018
+- 388 new coins added.
+- Bug fix: Privacy policy and Terms of use pages are not available when not logged in.
+
+v1.2.0 - 17 September 2018
+- Multi-currency support added. Default currency can be set in the backend. This setting affects coins quotes, competitions and trades.
+  Fiat currencies rates are pulled from openexchangerates.org (sign up for a FREE API key at https://openexchangerates.org/signup/free).
+- Application is prepared to install extra add-ons (pending release on CodeCanyon at the moment).
+
+v1.1.3 - 18 August 2018
+- Bug fix: it's possible to close a trade after it's already closed.
+
+v1.1.2 - 08 July 2018
+- Cookie consent added.
+- Market data refresh via REST API implemented to avoid discrepancies between WebSocket (real-time) and REST API quotes when opening/closing trades.
+- Compatibility issue fixed when PHP is configured to register ENV global variables (variables_order="EGPCS" in php.ini).
+
+v1.1.1 - 21 June 2018
+- Privacy Policy and Terms of Use pages added.
+
+v1.1.0 - 17 June 2018
+- Google Tag Manager integration added (specify GTM container ID in the app settings and manage all tags through the GTM workspace).
+- Google AdSense integration added (ad blocks can be add to the top and bottom of pages in the frontend).
+- Social login integration added (Facebook, Twitter, Google+, LinkedIn).
+- Black background theme implemented (can be selected in the backend).
+- Some other minor improvements and fixes.
+
+v1.0.2 - 15 June 2018
+- Help section with frequently asked questions and answers added to the front-end.
+
+v1.0.1 - 14 June 2018
+- Bug fix: limitation of maximum 127 participants removed.
+- Bug fix: leaderboard page inside a competition displays overall trading stats, rather than individual for current competition.
+
+v1.0.0 - 08 June 2018
+- Original release.

@@ -1,0 +1,18 @@
+{
+    "id": "accounting",
+    "name": "Accounting",
+    "description": "This add-on allows users to deposit and withdraw money to their accounts.",
+    "providers": [
+        "Packages\\Accounting\\Providers\\PackageServiceProvider",
+        "Packages\\Accounting\\Providers\\EventServiceProvider"
+    ],
+    "base_path": "accounting",
+    "source_path": "src",
+    "namespace": "Packages\\Accounting\\",
+    "static": {
+        "PaymentGatewaySeeder": "database/seeders",
+        "PaymentMethodSeeder": "database/seeders",
+        "WithdrawalMethodSeeder": "database/seeders"
+    },
+    "purchase_url": "https://1.envato.market/c/1261238/275988/4415?subId1=product&subId2=crypto-competitions-accounting&u=https%3A%2F%2Fcodecanyon.net%2Fitem%2Fcrypto-trading-competitions-accounting-cash-competitions-addon%2F22605407"
+}
